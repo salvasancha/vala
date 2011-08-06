@@ -161,9 +161,11 @@ public class Vala.BinaryExpression : Expression {
 
 		checked = true;
 
+		var insert_block = context.analyzer.get_insert_block (this);
+
 		// some expressions are not in a block,
 		// for example, expressions in method contracts
-		if (context.analyzer.current_symbol is Block
+		if (context.analyzer.get_current_symbol (this) is Block
 		    && (operator == BinaryOperator.AND || operator == BinaryOperator.OR)) {
 			// convert conditional expression into if statement
 			// required for flow analysis and exception handling
@@ -188,8 +190,8 @@ public class Vala.BinaryExpression : Expression {
 
 			var if_stmt = new IfStatement (left, true_block, false_block, source_reference);
 
-			insert_statement (context.analyzer.insert_block, decl);
-			insert_statement (context.analyzer.insert_block, if_stmt);
+			insert_statement (insert_block, decl);
+			insert_statement (insert_block, if_stmt);
 
 			decl.check (context);
 
@@ -263,8 +265,8 @@ public class Vala.BinaryExpression : Expression {
 
 			var if_stmt = new IfStatement (cond, true_block, null, source_reference);
 
-			insert_statement (context.analyzer.insert_block, decl);
-			insert_statement (context.analyzer.insert_block, if_stmt);
+			insert_statement (insert_block, decl);
+			insert_statement (insert_block, if_stmt);
 
 			if (!decl.check (context)) {
 				error = true;
