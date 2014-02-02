@@ -272,6 +272,11 @@ public class Vala.Parser : CodeVisitor {
 			}
 			break;
 		default:
+			if (compiler_code && current () == TokenType.DOT) {
+				next();
+				next();
+				return;
+			}
 			throw new ParseError.SYNTAX ("expected identifier");
 		}
 	}
@@ -413,9 +418,6 @@ public class Vala.Parser : CodeVisitor {
 	void skip_symbol_name () throws ParseError {
 		if (compiler_code && accept (TokenType.DOT)) {
 			// temporary variable
-			next ();
-			next ();
-			accept (TokenType.DOT);
 		}
 		do {
 			skip_identifier ();
