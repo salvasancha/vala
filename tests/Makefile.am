@@ -141,6 +141,7 @@ TESTS = \
 	control-flow/bug691514.vala	\
 	control-flow/bug736774-1.vala \
 	control-flow/bug736774-2.vala \
+	control-flow/bug764440.vala \
 	control-flow/bug790903.test \
 	control-semantic/argument-extra.test \
 	control-semantic/argument-incompatible-type-out.test \
