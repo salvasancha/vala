@@ -407,7 +407,6 @@ TESTS = \
 	parser/destructor-no-new.test \
 	parser/destructor-no-static-class.test \
 	parser/destructor-wrong-name.test \
-	parser/do-statement.vala \
 	parser/expect-endbrace.test \
 	parser/expect-error.test \
 	parser/field-no-abstract.test \
@@ -448,7 +447,6 @@ TESTS = \
 	parser/statement-outside-root.test \
 	parser/switch-statement.vala \
 	parser/template.vala \
-	parser/tuple.vala \
 	parser/unsupported-property-async.test \
 	parser/unsupported-property-throws.test \
 	parser/yield-method.test \
