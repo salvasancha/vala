@@ -1,0 +1,11 @@
+Invalid Code
+
+[Singleton]
+public class Foo : Object {
+}
+
+public class Bar : Foo {
+}
+
+void main () {
+}

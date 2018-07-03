@@ -230,6 +230,7 @@ public class Valadoc.Drivers.TreeBuilder : Vala.CodeVisitor {
 				"HasEmitter",
 				"ModuleInit",
 				"NoWrapper",
+				"Singleton",
 				"Immutable",
 				"ErrorBase",
 				"NoReturn",
