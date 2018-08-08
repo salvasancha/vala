@@ -598,7 +598,7 @@ public class Vala.GTypeModule : GErrorModule {
 			}
 		} else {
 			if (cl.has_private_fields) {
-				Report.error (cl.source_reference, "Private fields not supported in compact classes");
+				Report.error (cl.source_reference, _("Private fields not supported in compact classes"));
 			}
 		}
 	}
@@ -623,7 +623,7 @@ public class Vala.GTypeModule : GErrorModule {
 
 		if (get_ccode_name (cl).length < 3) {
 			cl.error = true;
-			Report.error (cl.source_reference, "Class name `%s' is too short".printf (get_ccode_name (cl)));
+			Report.error (cl.source_reference, _("Class name `%s' is too short").printf (get_ccode_name (cl)));
 			return;
 		}
 
@@ -2199,7 +2199,7 @@ public class Vala.GTypeModule : GErrorModule {
 
 		if (get_ccode_name (iface).length < 3) {
 			iface.error = true;
-			Report.error (iface.source_reference, "Interface name `%s' is too short".printf (get_ccode_name (iface)));
+			Report.error (iface.source_reference, _("Interface name `%s' is too short").printf (get_ccode_name (iface)));
 			return;
 		}
 
@@ -2395,13 +2395,13 @@ public class Vala.GTypeModule : GErrorModule {
 		}
 
 		if (cl != null && cl.is_compact && (prop.get_accessor == null || prop.get_accessor.automatic_body)) {
-			Report.error (prop.source_reference, "Properties without accessor bodies are not supported in compact classes");
+			Report.error (prop.source_reference, _("Properties without accessor bodies are not supported in compact classes"));
 			return;
 		}
 
 		if (base_prop.get_attribute ("NoAccessorMethod") == null &&
 			prop.name == "type" && ((cl != null && !cl.is_compact) || (st != null && get_ccode_has_type_id (st)))) {
-			Report.error (prop.source_reference, "Property 'type' not allowed");
+			Report.error (prop.source_reference, _("Property 'type' not allowed"));
 			return;
 		}
 		base.visit_property (prop);

@@ -169,7 +169,7 @@ public class Vala.CCodeArrayModule : CCodeMethodCallModule {
 				int dim = int.parse (lit.value);
 				set_cvalue (expr, get_array_length_cexpression (memberaccess.inner, dim + 1));
 			} else {
-				Report.error (expr.source_reference, "only integer literals supported as index");
+				Report.error (expr.source_reference, _("only integer literals supported as index"));
 			}
 		} else {
 			// access to element in an array
@@ -699,7 +699,7 @@ public class Vala.CCodeArrayModule : CCodeMethodCallModule {
 		    && (array_var is LocalVariable || array_var is Field)) {
 			// valid array add
 		} else {
-			Report.error (assignment.source_reference, "Array concatenation not supported for public array variables and parameters");
+			Report.error (assignment.source_reference, _("Array concatenation not supported for public array variables and parameters"));
 			return;
 		}
 

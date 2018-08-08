@@ -520,7 +520,7 @@ public class Vala.GVariantModule : GAsyncModule {
 		}
 
 		if (result == null) {
-			Report.error (type.source_reference, "GVariant deserialization of type `%s' is not supported".printf (type.to_string ()));
+			Report.error (type.source_reference, _("GVariant deserialization of type `%s' is not supported").printf (type.to_string ()));
 		}
 
 		return result;
@@ -812,7 +812,7 @@ public class Vala.GVariantModule : GAsyncModule {
 		}
 
 		if (result == null) {
-			Report.error (type.source_reference, "GVariant serialization of type `%s' is not supported".printf (type.to_string ()));
+			Report.error (type.source_reference, _("GVariant serialization of type `%s' is not supported").printf (type.to_string ()));
 		}
 
 		return result;

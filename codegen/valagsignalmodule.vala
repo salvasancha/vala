@@ -114,7 +114,7 @@ public class Vala.GSignalModule : GObjectModule {
 
 		if (detail_expr.value_type is NullType || !detail_expr.value_type.compatible (string_type)) {
 			node.error = true;
-			Report.error (detail_expr.source_reference, "only string details are supported");
+			Report.error (detail_expr.source_reference, _("only string details are supported"));
 			return null;
 		}
 
@@ -145,7 +145,7 @@ public class Vala.GSignalModule : GObjectModule {
 	private CCodeExpression? get_detail_cexpression (Expression detail_expr, CodeNode node) {
 		if (detail_expr.value_type is NullType || !detail_expr.value_type.compatible (string_type)) {
 			node.error = true;
-			Report.error (detail_expr.source_reference, "only string details are supported");
+			Report.error (detail_expr.source_reference, _("only string details are supported"));
 			return null;
 		}
 
@@ -167,7 +167,7 @@ public class Vala.GSignalModule : GObjectModule {
 		var cl = sig.parent_symbol as Class;
 		if (cl != null && cl.is_compact) {
 			sig.error = true;
-			Report.error (sig.source_reference, "Signals are not supported in compact classes");
+			Report.error (sig.source_reference, _("Signals are not supported in compact classes"));
 			return;
 		}
 
@@ -175,7 +175,7 @@ public class Vala.GSignalModule : GObjectModule {
 			foreach (DataType base_type in cl.get_base_types ()) {
 				if (SemanticAnalyzer.symbol_lookup_inherited (base_type.data_type, sig.name) is Signal) {
 					sig.error = true;
-					Report.error (sig.source_reference, "Signals with the same name as a signal in a base type are not supported");
+					Report.error (sig.source_reference, _("Signals with the same name as a signal in a base type are not supported"));
 					return;
 				}
 			}
@@ -507,7 +507,7 @@ public class Vala.GSignalModule : GObjectModule {
 			disconnect = true;
 		} else {
 			assignment.error = true;
-			Report.error (assignment.source_reference, "Specified compound assignment type for signals not supported.");
+			Report.error (assignment.source_reference, _("Specified compound assignment type for signals not supported."));
 			return;
 		}
 
@@ -610,7 +610,7 @@ public class Vala.GSignalModule : GObjectModule {
 		if (p != null) {
 			dt = p.variable_type as DelegateType;
 			if (dt != null && !context.experimental) {
-				Report.warning (dt.source_reference, "Connecting delegates to signals is experimental");
+				Report.warning (dt.source_reference, _("Connecting delegates to signals is experimental"));
 			}
 		}
 		var m = handler.symbol_reference as Method;
@@ -635,7 +635,7 @@ public class Vala.GSignalModule : GObjectModule {
 		} else {
 			// disconnect
 			if (handler is LambdaExpression) {
-				Report.error (handler.source_reference, "Cannot disconnect lambda expression from signal. Use Object.disconnect.");
+				Report.error (handler.source_reference, _("Cannot disconnect lambda expression from signal. Use Object.disconnect."));
 			}
 			if (sig is DynamicSignal) {
 				connect_func = get_dynamic_signal_disconnect_wrapper_name ((DynamicSignal) sig);
